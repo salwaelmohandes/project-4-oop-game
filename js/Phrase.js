@@ -31,8 +31,10 @@ class Phrase {
     }
 
     showMatchedLetter(letter){
-        let matchingLetters = document.getElementsByClassName('hide letter ' + letter);    
-        for (let i=0; i<matchingLetters.length; i+=1){
+        let matchingLetters = document.getElementsByClassName('letter ' + letter); 
+        console.log(matchingLetters);   
+        for (let i=0; i< matchingLetters.length; i+=1){
+            console.log(matchingLetters[i]);
             matchingLetters[i].textContent=letter;
             matchingLetters[i].classList.add("show");
             matchingLetters[i].classList.remove("hide");

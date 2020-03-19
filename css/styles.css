@@ -6,11 +6,11 @@
 :root {
   --color-win: #78CF82;
   --color-lose: #D94545;
-  --color-start: #5b85b7;
-  --color-neutral: #445069;
-  --color-neutral-light: #D2D2D2;
+  --color-start: #a5c8cb;
+  --color-neutral: #95c5c5;
+  --color-neutral-light: rgb(209, 186, 186);
   --color-keys: #37474F;
-  --color-keys-light: #E5E5E5;
+  --color-keys-light: rgb(171, 127, 127);
   --font-size-large: 60px;
   --font-size-medium: 20px;
   --transition: all .2s ease-in-out;
@@ -28,6 +28,7 @@ body {
   flex-direction: column;
   display: flex;
   height: 100vh;
+  background-color: #d3e5e7;
 }
 
 li, ol, ul {
@@ -86,7 +87,7 @@ button {
 /* Title */
 
 .header {
-  color: #3a3f58;
+  color: #2c5664;
 }
 
 
@@ -110,8 +111,8 @@ button {
 
 
 .show {
-  color: #fff;
-  background-color: #4ac0d5;
+  color: rgb(74, 62, 66);
+  background-color: #789ca3;
   font-size: 20px;
   height: 65px;
   width: 65px;
@@ -131,31 +132,32 @@ button {
 }
 
 .chosen {
-  background: #3a3f58;
+  background: #367a84;
   border-radius: 5px;
   font-size: var(--font-size-medium);
-  color: #FFFFFF;
+  color: rgb(162, 225, 231);
 }
 
 .wrong {
-  background: #f7a964;
+  background: #ab9786;
   color: #FFFFFF;
 }
 
 .btn__reset {
   padding: 16px;
   margin: 50px auto;
-  background: #f7a964;
+  background: #b79ca5;
   border-radius: 5px;
   font-size: 20px;
   cursor: pointer;
-  border-bottom: solid 4px rgba(0, 0, 0, .3);
+  border-bottom: solid 4px rgba(66, 61, 61, 0.3);
   border-right: solid 3px rgba(0, 0, 0, .3)
 }
 
+
 .btn__reset:active {
   padding: 14px 16px 16px 14px;
-  border-bottom: solid 4px rgba(0, 0, 0, 0);
+  border-bottom: solid 4px rgba(219, 212, 212, 0);
   border-right: solid 3px rgba(0, 0, 0, 0);
 }
 
@@ -166,7 +168,7 @@ button {
   display: flex;
   flex-direction: column;
   position: fixed;
-  color: #FFFFFF;
+  color: rgb(211, 156, 156);
   justify-content: center;
   top: 0;
   bottom: 0;
@@ -176,15 +178,15 @@ button {
 }
 
 .title {
-  color: #FFF;
+  color: rgb(122, 96, 106);
 }
 
 .start {
-  background-color: #3a3f58;
+  background-color: #90bac3;
 }
 
 .start a {
-  color: #fff;
+  color: rgb(59, 53, 53);
 }
 
 .win {

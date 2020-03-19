@@ -1,6 +1,8 @@
 /* Treehouse FSJS Techdegree
  * Project 4 - OOP Game App
  * Game.js */
+
+
 class Game {
     constructor(){
         this.missed=0;
@@ -15,7 +17,8 @@ class Game {
                     new Phrase("As warm as toast"),
                     new Phrase("Roasted to a turn")]
         return this.phrases;    
-        } 
+        }
+
     startGame(){
         const overlay=document.getElementById("overlay");
         overlay.style.display='none'; 
@@ -28,18 +31,39 @@ class Game {
         return this.phrases[Math.floor(Math.random()*this.phrases.length)];
     }
 
-    handleInteraction(letter){
-        if(this.activePhrase.checkLetter(letter)){
-            this.activePhrase.showMatchedLetter(letter);        
+    handleInteraction(button){
+        button.disabled=true;
+        if(!this.activePhrase.checkLetter(button.textContent)){
+            button.classList.add('key','wrong');
+            this.removeLife();
+        }else{
+            button.classList.add('key','chosen');
+            this.activePhrase.showMatchedLetter(button.textContent);
             if(this.checkForWin()) {
                 this.gameOver();
-            } else {
-                this.removeLife();
-            }  
-        } else {
-            this.missed += 1
+            }
+        }         
+    }
+
+    handleKeyDownInteraction(letter) { 
+        let buttons = document.getElementsByClassName("key");
+        let button;
+        for(let i=0; i<buttons.length; i+=1) {
+            if (buttons[i].textContent === letter) {
+                button = buttons[i];
+            }
         }
-        document.getElementsByClassName("key").disabled=true;
+        button.disabled=true;
+        if(!this.activePhrase.checkLetter(letter)){
+            button.classList.add('key','wrong');
+            this.removeLife();
+        }else{
+            button.classList.add('key','chosen');
+            this.activePhrase.showMatchedLetter(letter);
+            if(this.checkForWin()) {
+                this.gameOver();
+            }
+        } 
     }
 
     checkForWin(){
@@ -47,25 +71,45 @@ class Game {
     }
 
     removeLife(){
-    let hearts=document.getElementsByClassName("tries");
-    for(let i=0; i<hearts.length; i+=1){
-        if(this.missed>0){
-           hearts[0].scr="images/lostHeart.png";
-        }else if(this.missed===5){
+        let hearts=document.getElementsByClassName("tries");
+        hearts[this.missed].childNodes[0].src="images/lostHeart.png";
+        this.missed+=1
+        if(this.missed===5){
             this.gameOver();
-            }
         }
     }
+
     gameOver(){
         let h1= document.getElementById("game-over-message");
-        const overlay=document.getElementById("overlay");  
-        if(this.checkForWin()===true){
-            overlay.style.display='show';
-            overlay.style.backgroundColor='#CE2A6F ';
-            h1.textContent="You win";
-        }else{
-            overlay.style.backgroundColor='#2ACEBD';
-            h1.textContent="Game Over";
+        h1.style.fontSize = '3em';
+        h1.style.color='#5F4756';
+        const overlay=document.getElementById("overlay");
+        overlay.style.display='';  
+            if(this.checkForWin()){
+            overlay.style.backgroundColor='#12B968';
+            h1.textContent="!!**You Win**!!";  
+            }else{
+            overlay.style.backgroundColor='#F5466B';
+            h1.textContent="Game Over!";   
+        }
+        this.reset();
+    }
+    
+    // reset the gameboard between games after a game is completed.
+    reset(){
+        ul.removeChild(ul.firstChild);
+        ul.innerHTML='';
+        const button=document.getElementsByClassName("key");
+            for(let i=0; i<button.length; i+=1){
+            button[i].disabled=false;
+            button[i].classList.add("class","key");
+            button[i].classList.remove("chosen");
+            button[i].classList.remove("wrong");     
+        } 
+        this.missed=0;
+        let images=document.getElementsByTagName("img");
+            for(let i=0; i<images.length; i+=1){
+            images[i].src="images/liveHeart.png";                      
         }
     }
 }
