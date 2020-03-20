@@ -22,8 +22,8 @@ document.getElementById('qwerty').addEventListener('click',(e)=>{
 // Let players use their physical computer keyboard to enter guesses.
 
 document.addEventListener('keydown',(event)=>{
-    if(game !== null && game.missed !== 5 && event.key) {
-    game.handleKeyDownInteraction(event.key);
+    if(game !== null && game.missed !== 5 && (/^[a-z]$/).test(event.key)) {
+        game.handleKeyDownInteraction(event.key);
     }
 });
 
