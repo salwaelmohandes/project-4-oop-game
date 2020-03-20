@@ -4,7 +4,7 @@
 /* Variables */
 
 :root {
-  --color-win: #78CF82;
+  --color-win: rgb(87, 180, 98);
   --color-lose: #D94545;
   --color-start: #a5c8cb;
   --color-neutral: #95c5c5;
@@ -20,7 +20,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family:  'Marker Felt', fantasy;
 }
 
 body {
@@ -198,7 +198,7 @@ button {
 }
 
 .lose {
-  background-color: #f5785f;
+  background-color: #ea2424;
 }
 
 .lose a {

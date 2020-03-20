@@ -2,26 +2,28 @@
  * Project 4 - OOP Game App
  * app.js */
 
+let game = null;
 
-const game = new Game();
-game.createPhrases();
-
-
+// Start game.
 document.getElementById("btn__reset").addEventListener('click',(e)=>{
+    game = new Game();
     game.startGame();
 });
 
-document.getElementById('qwerty').addEventListener('click',(e)=>{   
-       
-    if (e.target.tagName==='BUTTON'){    
-    game.handleInteraction(e.target);        
-    }
-    
+// Clicking functionalty of the onscreen keyboard buttons 
+// not the space between them by using the if statement inside the event listener.
+
+document.getElementById('qwerty').addEventListener('click',(e)=>{     
+    if (e.target.tagName==='BUTTON'){  
+    game.handleInteraction(e.target); 
+    }    
 });
 
+// Let players use their physical computer keyboard to enter guesses.
+
 document.addEventListener('keydown',(event)=>{
-    if (event.key){
-        game.handleKeyDownInteraction(event.key);
+    if(game !== null && game.missed !== 5 && event.key) {
+    game.handleKeyDownInteraction(event.key);
     }
 });
 
