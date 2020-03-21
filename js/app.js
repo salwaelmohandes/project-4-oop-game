@@ -23,7 +23,7 @@ document.getElementById('qwerty').addEventListener('click',(e)=>{
 
 document.addEventListener('keydown',(event)=>{
     if(game !== null && game.missed !== 5 && (/^[a-z]$/).test(event.key)) {
-        game.handleKeyDownInteraction(event.key);
+    game.handleKeyDownInteraction(event.key);
     }
 });
 

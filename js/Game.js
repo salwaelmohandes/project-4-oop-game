@@ -55,21 +55,28 @@ class Game {
         let buttons = document.getElementsByClassName("key");
         let button;
         for(let i=0; i<buttons.length; i+=1) {
+       
             if (buttons[i].textContent === letter) {
-                button = buttons[i];    
+                button = buttons[i];  
             }
         }
-        if(!this.activePhrase.checkLetter(letter)){
-            button.classList.add('key','wrong');
-            this.removeLife();
-        }else{
-            button.classList.add('key','chosen');
-            this.activePhrase.showMatchedLetter(letter);
-            if(this.checkForWin()) {
-                this.gameOver();
-            }
-        } 
+        if (button.disabled === false) {
+            button.disabled = true;
+            if(!this.activePhrase.checkLetter(letter)){
+                button.classList.add('key','wrong');
+      
+                this.removeLife();
+            
+            }else{
+                button.classList.add('key','chosen');
+                this.activePhrase.showMatchedLetter(letter);
+                if(this.checkForWin()) {
+                    this.gameOver();
+                }
+            } 
+        }
     }
+
     checkForWin(){
         return document.getElementsByClassName("hide").length == 0;
     }
@@ -90,11 +97,11 @@ class Game {
         h1.style.color='#5F4756';
         const overlay=document.getElementById("overlay");
         overlay.style.display='';  
-            if(this.checkForWin()){
-            overlay.classList.add('win');
+        if(this.checkForWin()){
+            overlay.setAttribute('class', 'win');
             h1.textContent="!!**You Win**!!";  
-            }else{
-            overlay.classList.add('lose');
+        } else {
+            overlay.setAttribute('class', 'lose');
             h1.textContent="Game Over!";   
         }
         this.reset();
@@ -102,7 +109,7 @@ class Game {
     
 // reset the gameboard between games after a game is completed.
 
-    reset() {
+   reset() {
         let ul = document.getElementsByTagName("ul");
         ul[0].innerHTML='';
         const button=document.getElementsByClassName("key");

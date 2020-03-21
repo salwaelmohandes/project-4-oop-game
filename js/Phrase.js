@@ -29,7 +29,7 @@ class Phrase {
         }
     }
 
-// Checks to see if passed letter is in phrase.
+// checks to see if passed letter is in phrase.
     checkLetter(letter){
         return this.phrase.includes(letter);
     }
